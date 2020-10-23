@@ -1,14 +1,15 @@
 pipeline {
   agent any
-  triggers {
-        pollSCM('*/5 * * * 1-7')
-    }
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        build 'python3 --version'
+        sh '''python3 --version
+python3 -m pip freeze'''
       }
     }
 
+  }
+  triggers {
+    pollSCM('*/5 * * * 1-7')
   }
 }
