@@ -8,9 +8,7 @@ python3 -m pip freeze
 echo $BUILD_TAG
 ls
 pwd
-cd ..
-ls
-cd ../..
+cd /var/lib/jenkins/
 ls'''
       }
     }
