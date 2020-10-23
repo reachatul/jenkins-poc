@@ -8,8 +8,10 @@ python3 -m pip freeze
 echo $BUILD_TAG
 ls
 pwd
-cd /var/lib/jenkins/
-ls'''
+cd /var/lib/jenkins/quanthub/
+source source_this
+python3 -m pytest --log-cli-level=INFO lib/quantalgos/tests/test_poc.py
+'''
       }
     }
 
