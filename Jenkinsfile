@@ -11,6 +11,8 @@ ls
 pwd
 cd /var/lib/jenkins/quanthub/
 echo $QUANT_HOME
+source source_this
+echo $QUANT_HOME
 python3 -m pytest --log-cli-level=INFO lib/quantalgos/tests/test_poc.py'''
       }
     }
