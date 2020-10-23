@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Test Script') {
       steps {
-        sh '''python3 --version
+        bash '''#!/bin/bash
+python3 --version
 python3 -m pip freeze
 echo $BUILD_TAG
 ls
