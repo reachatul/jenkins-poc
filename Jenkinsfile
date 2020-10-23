@@ -9,8 +9,8 @@ echo $BUILD_TAG
 ls
 pwd
 cd /var/lib/jenkins/quanthub/
-python3 -m pytest --log-cli-level=INFO lib/quantalgos/tests/test_poc.py
-'''
+echo $QUANT_HOME
+python3 -m pytest --log-cli-level=INFO lib/quantalgos/tests/test_poc.py'''
       }
     }
 
