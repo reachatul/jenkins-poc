@@ -18,4 +18,7 @@ cd $GUROBI_HOME'''
     }
 
   }
+  environment {
+    PATH = '"/var/lib/jenkins/miniconda3/bin:$PATH"'
+  }
 }
