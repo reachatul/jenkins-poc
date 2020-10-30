@@ -4,6 +4,8 @@ pipeline {
     stage('BUILD AND TEST') {
       steps {
         sh '''source /var/lib/jenkins/source_this
+
+PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
         
 conda create --yes -n $BUILD_TAG python=3.7
 
@@ -17,8 +19,5 @@ cd $GUROBI_HOME'''
       }
     }
 
-  }
-  environment {
-    PATH = '/var/lib/jenkins/miniconda3/bin:$PATH'
   }
 }
