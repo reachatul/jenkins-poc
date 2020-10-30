@@ -6,6 +6,8 @@ pipeline {
         sh '''source /var/lib/jenkins/source_this
 
 PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
+
+conda init
         
 conda create --yes -n $BUILD_TAG python=3.7
 
