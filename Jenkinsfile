@@ -4,7 +4,9 @@ pipeline {
     stage('Build') {
       steps {
         sh '''
-        source /var/lib/jenkins/source_this
+        export GUROBI_HOME="/opt/gurobi903/linux64"
+        export PATH="${PATH}:${GUROBI_HOME}/bin"
+        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
         PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
         eval "$(conda shell.bash hook)"
         conda create --yes -n $BUILD_TAG python=3.7
