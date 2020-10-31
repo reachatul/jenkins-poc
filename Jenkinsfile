@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Test Script') {
+    stage('Build') {
       steps {
         sh '''
         source /var/lib/jenkins/source_this
@@ -17,8 +17,17 @@ pipeline {
         exit
         '''
       }
+      }
+    post{
+      always{
+        sh '''
+        bash
+        conda remove --yes -n $BUILD_TAG --all
+        rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
+        '''
+      }
     }
-  }
+    }
   triggers {
     pollSCM('*/5 * * * 1-7')
   }
