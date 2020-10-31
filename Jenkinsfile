@@ -22,9 +22,11 @@ pipeline {
   post{
       always{
         sh '''
+        PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
         bash
         conda remove --yes -n $BUILD_TAG --all
         rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
+        exit
         '''
       }
     }
