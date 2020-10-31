@@ -14,7 +14,7 @@ pipeline {
         conda activate $BUILD_TAG
         conda install --force-reinstall -y --file requirements.txt
         cd $GUROBI_HOME
-        sudo  /var/lib/jenkins/miniconda3/envs/test_env/bin/python setup.py install
+        sudo env "PATH=$PATH" /var/lib/jenkins/miniconda3/envs/$BUILD_TAG/bin/python setup.py install
         cd $QUANT_HOME
         ls
         exit
