@@ -8,11 +8,10 @@ pipeline {
         export PATH="${PATH}:${GUROBI_HOME}/bin"
         export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
         PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
-        eval "$(conda shell.bash hook)"
-        conda create --yes -n $BUILD_TAG python=3.7
         export QUANT_HOME=$(pwd)
         # eval "$(conda shell.bash hook)"
         bash
+        conda create --yes -n $BUILD_TAG python=3.7
         conda activate $BUILD_TAG
         conda install --force-reinstall -y --file requirements.txt
         cd $GUROBI_HOME
