@@ -23,12 +23,6 @@ pipeline {
       }
     }
 
-    stage('') {
-      steps {
-        emailext(attachmentsPattern: '.html', attachLog: true, body: 'Test', subject: 'This is what I will try now', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
-      }
-    }
-
   }
   post {
     always {
@@ -42,7 +36,7 @@ pipeline {
     }
 
     failure {
-      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, attachmentsPattern: '**/*.html', body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
+      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, attachmentsPattern: '.html', body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
     }
 
   }
