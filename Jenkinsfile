@@ -18,6 +18,7 @@ pipeline {
         cd $QUANT_HOME
         ls
         exit
+        This_will_fail
         '''
       }
       }
@@ -32,6 +33,9 @@ pipeline {
         sudo rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
         exit
         '''
+      }
+      failure{
+      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, attachmentsPattern: '**/*.html', body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS CI-CD', to: 'achavan@55-ip.com')
       }
     }
   triggers {
