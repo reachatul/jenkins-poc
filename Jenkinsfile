@@ -23,6 +23,12 @@ pipeline {
       }
     }
 
+    stage('') {
+      steps {
+        emailext(attachmentsPattern: '.html', attachLog: true, body: 'Test', subject: 'This is what I will try now', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
+      }
+    }
+
   }
   post {
     always {
