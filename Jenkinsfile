@@ -36,7 +36,7 @@ pipeline {
     }
 
     failure {
-      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
+      emailext(subject: 'Quanthub: Dev Test Results', attachmentsPattern: '**/*.html', attachLog: true, body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
     }
 
   }
