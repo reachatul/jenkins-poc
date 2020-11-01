@@ -34,11 +34,10 @@ pipeline {
         sudo rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
         exit
         '''
-      publishHTML(allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '')
     }
 
     failure {
-      emailext(subject: 'Quanthub: Dev Test Results', attachmentsPattern: '**/*.html', attachLog: true, body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
+      emailext(subject: 'Quanthub: Dev Test Results', attachmentsPattern: '**/*.html', attachLog: true, body: ' ${JELLY_SCRIPT,template="text"}', from: 'JENKINS-CI-CD', to: 'achavan@55-ip.com')
     }
 
   }
