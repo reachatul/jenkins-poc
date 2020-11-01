@@ -16,6 +16,7 @@ pipeline {
         cd $GUROBI_HOME
         sudo env "PATH=$PATH" /var/lib/jenkins/miniconda3/envs/$BUILD_TAG/bin/python setup.py install
         cd $QUANT_HOME
+        ${JELLY_SCRIPT,template="html"} >> log.html
         ls
         This_will_fail
         exit
