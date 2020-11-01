@@ -11,8 +11,6 @@ pipeline {
         export QUANT_HOME=$(pwd)
         eval "$(conda shell.bash hook)"
         conda create --yes -n $BUILD_TAG python=3.7
-        # eval "$(conda shell.bash hook)"
-        # bash
         conda activate $BUILD_TAG
         conda install --force-reinstall -y --file requirements.txt
         cd $GUROBI_HOME
@@ -24,6 +22,7 @@ pipeline {
       }
       }
     }
+
   post{
       always{
         sh '''
