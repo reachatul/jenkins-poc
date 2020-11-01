@@ -17,27 +17,29 @@ pipeline {
         sudo env "PATH=$PATH" /var/lib/jenkins/miniconda3/envs/$BUILD_TAG/bin/python setup.py install
         cd $QUANT_HOME
         ls
-        exit
         This_will_fail
+        exit
         '''
-      }
       }
     }
 
-  post{
-      always{
-        sh '''
+  }
+  post {
+    always {
+      sh '''
         PATH="/var/lib/jenkins/miniconda3/bin:$PATH"
         bash
         conda remove --yes -n $BUILD_TAG --all
         sudo rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
         exit
         '''
-      }
-      failure{
-      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, attachmentsPattern: '**/*.html', body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS CI-CD', to: 'achavan@55-ip.com')
-      }
     }
+
+    failure {
+      emailext(subject: 'Quanthub: Dev Test Results', attachLog: true, attachmentsPattern: '**/*.html', body: 'Check console output at $BUILD_URL/console to view the results.', from: 'JENKINS CI-CD', to: 'achavan@55-ip.com')
+    }
+
+  }
   triggers {
     pollSCM('*/5 * * * 1-7')
   }
