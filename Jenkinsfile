@@ -33,6 +33,7 @@ pipeline {
         sudo rm -rf /var/lib/jenkins/miniconda3/envs/$BUILD_TAG
         exit
         '''
+      publishHTML(allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '')
     }
 
     failure {
